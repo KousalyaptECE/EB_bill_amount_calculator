@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EB bill amount calculator</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>EB bill amount calculator</h2>
+        <div class="inputdiv">
+            <input type="text" id="input" placeholder="Units">
+        </div>
+        <div>
+            <button type="submit" onclick="calculate()">Calculate</button>
+        </div>
+        <div id="result">
+
+        </div>
+    </div>
+    <script>
+
+        function calculate(){
+            const input = Number(document.getElementById("input").value);
+            let amount = 0;
+            if(input<=50){
+                amount = 0.75*input;
+            }else if(input>50 && input<=(100+50)){
+                let temp = input-50;
+                amount = (0.75*50) + (1*temp);
+            }else if(input>(100+50) && input<=(100+100+50)){
+                let temp = input-150;
+                amount = (0.75*50) + (1*100) + (1.30*temp);
+            }else{
+                let temp = input-250;
+                amount = (0.75*50) + (1*100) + (1.30*100) + (1.50*temp);
+            }
+            let result = document.getElementById("result");
+            result.innerHTML = `Rs.${amount}`; 
+        }
+       
+
+    </script>
+</body>
+</html>
